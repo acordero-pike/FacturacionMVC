@@ -1,0 +1,59 @@
+﻿@model Facturacion.Models.Producto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID_PROUCTO" />
+            <div class="form-group">
+                <label asp-for="NOMBRE" class="control-label"></label>
+                <input asp-for="NOMBRE" class="form-control" />
+                <span asp-validation-for="NOMBRE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DESCRIPCION" class="control-label"></label>
+                <input asp-for="DESCRIPCION" class="form-control" />
+                <span asp-validation-for="DESCRIPCION" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PRECIO" class="control-label"></label>
+                <input asp-for="PRECIO" class="form-control" />
+                <span asp-validation-for="PRECIO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="COSTO" class="control-label"></label>
+                <input asp-for="COSTO" class="form-control" />
+                <span asp-validation-for="COSTO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EXISTENCIA" class="control-label"></label>
+                <input asp-for="EXISTENCIA" class="form-control" />
+                <span asp-validation-for="EXISTENCIA" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ACTIVO" /> @Html.DisplayNameFor(model => model.ACTIVO)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

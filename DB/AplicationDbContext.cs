@@ -19,6 +19,7 @@ namespace Facturacion.DB
         public DbSet<Cliente>  clientes { get; set; }
         public DbSet<Factura>  facturas { get; set; }
         public DbSet<Detalle_Factura>  detalle { get; set; }
+        public DbSet<Facturacion.Models.Producto> Producto { get; set; }
 
     }
     
