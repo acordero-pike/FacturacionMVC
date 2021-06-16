@@ -1,0 +1,39 @@
+﻿@model Facturacion.Models.Usuario
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form">
+
+    <h1>Details</h1>
+
+    <div>
+        <h4>Usuario</h4>
+        <hr />
+        <dl class="row">
+            <dt class="colm">
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.password)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.password)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.id_usu">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

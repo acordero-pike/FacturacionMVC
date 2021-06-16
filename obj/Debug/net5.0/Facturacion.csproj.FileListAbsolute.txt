@@ -468,3 +468,8 @@ C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.dll
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\ref\Facturacion.dll
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.pdb
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.genruntimeconfig.cache
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Usuarios\Create.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Usuarios\Delete.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Usuarios\Details.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Usuarios\Edit.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Usuarios\Index.cshtml.g.cs

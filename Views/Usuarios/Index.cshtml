@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Facturacion.Models.Cliente>
+﻿@model IEnumerable<Facturacion.Models.Usuario>
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Index</h1>
@@ -13,19 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombres)
+                @Html.DisplayNameFor(model => model.User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellido)
+                @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activo)
+                @Html.DisplayNameFor(model => model.password)
             </th>
             <th></th>
         </tr>
@@ -34,19 +29,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nombres)
+                @Html.DisplayFor(modelItem => item.User)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
+                @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activo)
+                @Html.DisplayFor(modelItem => item.password)
             </td>
             <td>
                 <div class="btn-group">
@@ -57,20 +46,20 @@
                         <div class="btn-group btn-group">
 
 
-                            <a asp-action="Edit" asp-route-id="@item.codigo_cliente">
+                            <a asp-action="Edit" asp-route-id="@item.id_usu">
                                 <input type="button" class="btn btn-secondary" value="Editar" />
                             </a>
 
 
 
-                            <a asp-action="Details" asp-route-id="@item.codigo_cliente">
+                            <a asp-action="Details" asp-route-id="@item.id_usu">
                                 <input type="button" class="btn btn-success" value="Detalle" />
                             </a>
 
 
 
-                            <a asp-action="Delete" asp-route-id="@item.codigo_cliente">
-                                <input type="button" class="btn btn-danger" value="Eliminar" />
+                            <a asp-action="Delete" asp-route-id="@item.id_usu">
+                            <input type="button" class="btn btn-danger" value="Eliminar" />
                             </a>
 
 
@@ -82,6 +71,9 @@
 
                     </div>
                 </div>
+
+
+
             </td>
         </tr>
 }

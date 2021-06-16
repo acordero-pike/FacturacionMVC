@@ -30,7 +30,7 @@ namespace Facturacion.Controllers
         }
         [HttpPost("contacto")]
         public IActionResult mensaje(string Nombre, string Correo , string Telefono , string Mensaje)
-        {
+        {/*
             
             MailMessage email = new MailMessage();
             SmtpClient smtp = new SmtpClient();
@@ -67,7 +67,9 @@ namespace Facturacion.Controllers
             {
                 TempData["Error"] = "Error enviando correo electrónico: " + ex.Message;
             }
+            */
             return RedirectToAction("Contactenos", "Home");
+            
         }
 
 

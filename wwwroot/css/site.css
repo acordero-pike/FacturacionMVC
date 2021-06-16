@@ -60,8 +60,17 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: Url("https://img.freepik.com/vector-gratis/fondo-realista-negro-formas-geometricas-plateadas_1017-30668.jpg?size=626&ext=jpg");
+    background-size: cover;
+    color:white;
+}
+.table {
+    color: white;
+    background: #121c3a94;
+    box-sizing:border-box;
+    border-radius:10PX;
 }
 .footer {
   position: absolute;
