@@ -3,52 +3,54 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="form">
+    <h1>Detalle</h1>
 
-<h1>Details</h1>
-
-<div>
-    <h4>Producto</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <div >
+        <h4>Producto</h4>
+        <hr /><div class="colm">
+    <dl  >
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NOMBRE)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NOMBRE)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DESCRIPCION)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DESCRIPCION)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PRECIO)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PRECIO)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.COSTO)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.COSTO)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.EXISTENCIA)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EXISTENCIA)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ACTIVO)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ACTIVO)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID_PROUCTO">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+</div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.ID_PROUCTO"><input type="button" value="Regresar" class="btn btn-warning" /></a> |
+        <a asp-action="Index"><input type="button" value="Regresar" class="btn btn-success" /></a>
+    </div>
 </div>

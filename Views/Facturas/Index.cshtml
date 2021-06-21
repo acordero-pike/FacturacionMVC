@@ -1,17 +1,18 @@
 ﻿@model IEnumerable<Facturacion.Models.Factura>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
-<h1>Index</h1>
+<h1>Listado</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><input type="button" value="Agregar Nuevo" class="btn btn-success" /></a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cliente)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
@@ -25,23 +26,58 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Anulada)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Numero_Factura">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Numero_Factura">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Numero_Factura">Delete</a>
-            </td>
-        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cliente.Nombres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anulada)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Acciones
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="btn-group btn-group">
+
+
+                                <a asp-action="Edit" asp-route-id="@item.Numero_Factura">
+                                    <input type="button" class="btn btn-secondary" value="Editar" />
+                                </a>
+
+
+
+                                <a asp-action="Details" asp-route-id="@item.Numero_Factura">
+                                    <input type="button" class="btn btn-success" value="Detalle" />
+                                </a>
+
+
+
+                                <a asp-action="Delete" asp-route-id="@item.Numero_Factura">
+                                    <input type="button" class="btn btn-danger" value="Eliminar" />
+                                </a>
+
+
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
 }
     </tbody>
 </table>

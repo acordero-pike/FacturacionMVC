@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<Facturacion.Models.Producto>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
-<h1>Index</h1>
+<h1>Listado</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><input type="button" value="Agregar Nuevo" class="btn btn-success" /></a>
 </p>
 <table class="table">
     <thead>
@@ -34,65 +32,65 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NOMBRE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DESCRIPCION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRECIO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.COSTO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EXISTENCIA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ACTIVO)
-            </td>
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Acciones
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <div class="btn-group btn-group">
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DESCRIPCION)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PRECIO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.COSTO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EXISTENCIA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ACTIVO)
+    </td>
+    <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Acciones
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="btn-group btn-group">
 
 
-                            <a asp-action="Edit" asp-route-id="@item.ID_PROUCTO">
-                                <input type="button" class="btn btn-secondary" value="Editar" />
-                            </a>
-
-
-
-                            <a asp-action="Details" asp-route-id="@item.ID_PROUCTO">
-                                <input type="button" class="btn btn-success" value="Detalle" />
-                            </a>
+                    <a asp-action="Edit" asp-route-id="@item.ID_PROUCTO">
+                        <input type="button" class="btn btn-secondary" value="Editar" />
+                    </a>
 
 
 
-                            <a asp-action="Delete" asp-route-id="@item.ID_PROUCTO">
-                                <input type="button" class="btn btn-danger" value="Eliminar" />
-                            </a>
+                    <a asp-action="Details" asp-route-id="@item.ID_PROUCTO">
+                        <input type="button" class="btn btn-success" value="Detalle" />
+                    </a>
+
+
+
+                    <a asp-action="Delete" asp-route-id="@item.ID_PROUCTO">
+                        <input type="button" class="btn btn-danger" value="Eliminar" />
+                    </a>
 
 
 
 
 
-                        </div>
-
-
-                    </div>
                 </div>
 
 
+            </div>
+        </div>
 
-            </td>
-        </tr>
-}
+
+
+    </td>
+</tr>}
     </tbody>
 </table>

@@ -48,15 +48,10 @@ namespace Facturacion.Migrations
 
             modelBuilder.Entity("Facturacion.Models.Detalle_Factura", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ID_PROUCTO")
+                    b.Property<int?>("Numero_Factura")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Numero_Factura")
+                    b.Property<int?>("ID_PROUCTO")
                         .HasColumnType("int");
 
                     b.Property<double>("Precio_Unitario")
@@ -65,13 +60,11 @@ namespace Facturacion.Migrations
                     b.Property<int>("cantidad")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Numero_Factura", "ID_PROUCTO");
 
                     b.HasIndex("ID_PROUCTO");
 
-                    b.HasIndex("Numero_Factura");
-
-                    b.ToTable("detalle");
+                    b.ToTable("detalle_Facturas");
                 });
 
             modelBuilder.Entity("Facturacion.Models.Factura", b =>
@@ -90,7 +83,7 @@ namespace Facturacion.Migrations
                     b.Property<double>("Total")
                         .HasColumnType("float");
 
-                    b.Property<int?>("codigo_cliente")
+                    b.Property<int>("codigo_cliente")
                         .HasColumnType("int");
 
                     b.HasKey("Numero_Factura");
@@ -158,11 +151,15 @@ namespace Facturacion.Migrations
                 {
                     b.HasOne("Facturacion.Models.Producto", "producto")
                         .WithMany()
-                        .HasForeignKey("ID_PROUCTO");
+                        .HasForeignKey("ID_PROUCTO")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Facturacion.Models.Factura", "Factura")
                         .WithMany()
-                        .HasForeignKey("Numero_Factura");
+                        .HasForeignKey("Numero_Factura")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Factura");
 
@@ -173,7 +170,9 @@ namespace Facturacion.Migrations
                 {
                     b.HasOne("Facturacion.Models.Cliente", "cliente")
                         .WithMany()
-                        .HasForeignKey("codigo_cliente");
+                        .HasForeignKey("codigo_cliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("cliente");
                 });

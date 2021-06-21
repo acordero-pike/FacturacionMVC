@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1vVKMBlqfFkMNbnl24NcBSpupwaW7wbqmjyT/Hn6gbmgv0dSSXGE3fDDxo/Xs3KoOHM3Q7d3xC8PmC5HktqEzg==",
+  "dgSpecHash": "1pECsKMfhesbADy3LQOVdYzs4Kob4CETsaWmQ/C8YUYsqWeahybe8gxLB1ZInvsTrPQ1+hUBf4jXzMB9f5VYNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\albin\\Desktop\\MVC\\Facturacion\\Facturacion.csproj",
+  "projectFilePath": "C:\\Users\\albin\\Desktop\\FacturacionMVC-develop\\FacturacionMVC-develop\\Facturacion.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\albin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\albin\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

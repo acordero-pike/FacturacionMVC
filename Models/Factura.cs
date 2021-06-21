@@ -10,8 +10,9 @@ namespace Facturacion.Models
     public class Factura
     {
         [Key]
-        public int? Numero_Factura {get; set;}
-
+        public int? Numero_Factura { get; set; }
+        [Display(Name="Cliente")]
+        public int codigo_cliente { get; set; }
         [ForeignKey("codigo_cliente")]
         public virtual Cliente cliente { get; set; }
 

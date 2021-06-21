@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Listado</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><input type="button" value="Agregar Nuevo" class="btn btn-success" /></a>
 </p>
 <table class="table">
     <thead>
@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.password)
+               <input type="password" value="@item.password"  readonly="readonly"/>
             </td>
             <td>
                 <div class="btn-group">

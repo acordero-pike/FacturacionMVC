@@ -21,13 +21,14 @@ namespace Facturacion.Controllers
             _context = context;
         }
 
-        // GET: Facturas
+        // GET: Facturas1
         public async Task<IActionResult> Index()
         {
-            return View(await _context.facturas.ToListAsync());
+            var aplicationDbContext = _context.facturas.Include(f => f.cliente);
+            return View(await aplicationDbContext.ToListAsync());
         }
 
-        // GET: Facturas/Details/5
+        // GET: Facturas1/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,6 +37,7 @@ namespace Facturacion.Controllers
             }
 
             var factura = await _context.facturas
+                .Include(f => f.cliente)
                 .FirstOrDefaultAsync(m => m.Numero_Factura == id);
             if (factura == null)
             {
@@ -45,18 +47,19 @@ namespace Facturacion.Controllers
             return View(factura);
         }
 
-        // GET: Facturas/Create
+        // GET: Facturas1/Create
         public IActionResult Create()
         {
+            ViewData["codigo_cliente"] = new SelectList(_context.clientes,"codigo_cliente","Nombres");
             return View();
         }
 
-        // POST: Facturas/Create
+        // POST: Facturas1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Numero_Factura,Fecha,Total,Anulada")] Factura factura)
+        public async Task<IActionResult> Create([Bind("Numero_Factura,codigo_cliente,Fecha,Total,Anulada")] Factura factura)
         {
             if (ModelState.IsValid)
             {
@@ -64,10 +67,11 @@ namespace Facturacion.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["codigo_cliente"] = new SelectList(_context.clientes, "codigo_cliente", "Nombres", factura.codigo_cliente);
             return View(factura);
         }
 
-        // GET: Facturas/Edit/5
+        // GET: Facturas1/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,15 +84,16 @@ namespace Facturacion.Controllers
             {
                 return NotFound();
             }
+            ViewData["codigo_cliente"] = new SelectList(_context.clientes, "codigo_cliente", "Nombres", factura.codigo_cliente);
             return View(factura);
         }
 
-        // POST: Facturas/Edit/5
+        // POST: Facturas1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("Numero_Factura,Fecha,Total,Anulada")] Factura factura)
+        public async Task<IActionResult> Edit(int? id, [Bind("Numero_Factura,codigo_cliente,Fecha,Total,Anulada")] Factura factura)
         {
             if (id != factura.Numero_Factura)
             {
@@ -115,10 +120,11 @@ namespace Facturacion.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["codigo_cliente"] = new SelectList(_context.clientes, "codigo_cliente", "Nombres", factura.codigo_cliente);
             return View(factura);
         }
 
-        // GET: Facturas/Delete/5
+        // GET: Facturas1/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -127,6 +133,7 @@ namespace Facturacion.Controllers
             }
 
             var factura = await _context.facturas
+                .Include(f => f.cliente)
                 .FirstOrDefaultAsync(m => m.Numero_Factura == id);
             if (factura == null)
             {
@@ -136,7 +143,7 @@ namespace Facturacion.Controllers
             return View(factura);
         }
 
-        // POST: Facturas/Delete/5
+        // POST: Facturas1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)

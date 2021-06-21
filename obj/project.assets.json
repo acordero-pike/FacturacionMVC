@@ -7616,24 +7616,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\albin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\albin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\albin\\Desktop\\MVC\\Facturacion\\Facturacion.csproj",
+      "projectUniqueName": "C:\\Users\\albin\\Desktop\\FacturacionMVC-develop\\FacturacionMVC-develop\\Facturacion.csproj",
       "projectName": "Facturacion",
-      "projectPath": "C:\\Users\\albin\\Desktop\\MVC\\Facturacion\\Facturacion.csproj",
+      "projectPath": "C:\\Users\\albin\\Desktop\\FacturacionMVC-develop\\FacturacionMVC-develop\\Facturacion.csproj",
       "packagesPath": "C:\\Users\\albin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\albin\\Desktop\\MVC\\Facturacion\\obj\\",
+      "outputPath": "C:\\Users\\albin\\Desktop\\FacturacionMVC-develop\\FacturacionMVC-develop\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\albin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7708,7 +7703,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
