@@ -14,13 +14,13 @@ namespace Facturacion.Models
 
         [Key, Column(Order = 1)]
         [Display(Name ="Factura")]
-        public int? Numero_Factura;
+        public int? Numero_Factura { get; set; }
 
         [ForeignKey("Numero_Factura")]
         public virtual Factura Factura { get; set; }
         [Key, Column(Order = 2)]
         [Display(Name = "Producto")]
-        public int? ID_PROUCTO;
+        public int? ID_PROUCTO { get; set; } 
         [ForeignKey("ID_PROUCTO")]
         public virtual Producto producto { get; set; }
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Facturacion.Migrations
 {
-    public partial class m2 : Migration
+    public partial class data : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,12 +43,27 @@ namespace Facturacion.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    id_usu = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    User = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.id_usu);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "facturas",
                 columns: table => new
                 {
                     Numero_Factura = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    codigo_cliente = table.Column<int>(type: "int", nullable: true),
+                    codigo_cliente = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Total = table.Column<double>(type: "float", nullable: false),
                     Anulada = table.Column<bool>(type: "bit", nullable: false)
@@ -61,46 +76,39 @@ namespace Facturacion.Migrations
                         column: x => x.codigo_cliente,
                         principalTable: "clientes",
                         principalColumn: "codigo_cliente",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "detalle",
+                name: "detalle_Facturas",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Numero_Factura = table.Column<int>(type: "int", nullable: true),
-                    ID_PROUCTO = table.Column<int>(type: "int", nullable: true),
+                    Numero_Factura = table.Column<int>(type: "int", nullable: false),
+                    ID_PROUCTO = table.Column<int>(type: "int", nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
                     Precio_Unitario = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_detalle", x => x.id);
+                    table.PrimaryKey("PK_detalle_Facturas", x => new { x.Numero_Factura, x.ID_PROUCTO });
                     table.ForeignKey(
-                        name: "FK_detalle_facturas_Numero_Factura",
+                        name: "FK_detalle_Facturas_facturas_Numero_Factura",
                         column: x => x.Numero_Factura,
                         principalTable: "facturas",
                         principalColumn: "Numero_Factura",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_detalle_Producto_ID_PROUCTO",
+                        name: "FK_detalle_Facturas_Producto_ID_PROUCTO",
                         column: x => x.ID_PROUCTO,
                         principalTable: "Producto",
                         principalColumn: "ID_PROUCTO",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_detalle_ID_PROUCTO",
-                table: "detalle",
+                name: "IX_detalle_Facturas_ID_PROUCTO",
+                table: "detalle_Facturas",
                 column: "ID_PROUCTO");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_detalle_Numero_Factura",
-                table: "detalle",
-                column: "Numero_Factura");
 
             migrationBuilder.CreateIndex(
                 name: "IX_facturas_codigo_cliente",
@@ -111,7 +119,10 @@ namespace Facturacion.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "detalle");
+                name: "detalle_Facturas");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "facturas");

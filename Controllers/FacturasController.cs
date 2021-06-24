@@ -158,5 +158,11 @@ namespace Facturacion.Controllers
         {
             return _context.facturas.Any(e => e.Numero_Factura == id);
         }
+
+        public IActionResult AGP(int id)
+        {
+            
+            return RedirectToAction("Index", "Detalle_Factura",new { x =id});
+        }
     }
 }
