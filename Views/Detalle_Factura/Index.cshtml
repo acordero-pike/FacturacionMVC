@@ -92,17 +92,18 @@
                     @Html.DisplayFor(modelItem => item.cantidad)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Precio_Unitario)
+                   $ @Html.DisplayFor(modelItem => item.Precio_Unitario)
                 </td>
                 <td>
-                   @(item.Precio_Unitario*item.cantidad)
+                  $ @(item.Precio_Unitario*item.cantidad)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Numero_Factura })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Numero_Factura, id2 = item.ID_PROUCTO }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Numero_Factura, id2 = item.ID_PROUCTO })|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Numero_Factura, id2 = item.ID_PROUCTO })
                 </td>
             </tr>
         }
+        <tr> <td colspan="4"> </td> <td> Total : $@TempData["total"] </td></tr>
     </tbody>
 </table>

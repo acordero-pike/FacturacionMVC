@@ -37,6 +37,9 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Edit", "Edit", new { id = TempData["FAC"], id2 = TempData["Prod"] }) 
+    <a asp-action="Index" asp-route-id="@TempData["FAC"]">
+        <input type="button" class="btn btn-secondary" value="Regresar" />
+
+    </a>
 </div>

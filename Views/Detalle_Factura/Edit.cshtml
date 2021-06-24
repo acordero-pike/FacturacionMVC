@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Precio_Unitario" class="control-label"></label>
-                <input asp-for="Precio_Unitario" class="form-control" />
+                <input asp-for="Precio_Unitario" class="form-control"  readonly="readonly"/>
                 <span asp-validation-for="Precio_Unitario" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,7 +32,10 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-route-id="@TempData["Factura"]">
+        <input type="button" class="btn btn-secondary" value="Regresar" />
+
+    </a>
 </div>
 
 @section Scripts {

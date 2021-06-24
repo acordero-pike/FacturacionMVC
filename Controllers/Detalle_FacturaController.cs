@@ -21,25 +21,30 @@ namespace Facturacion.Controllers
         }
 
         // GET: Detalle_Factura
-        public async Task<IActionResult> Index(int? x)
+        public async Task<IActionResult> Index(int? id)
         {
-            if(x==null)
+            if(id==null)
             {
                 return BadRequest();
             }
             else
             {
-                TempData["Factura"] = x;
+                TempData["Factura"] = id;
                 ViewData["ID_PROUCTO"] = new SelectList(_context.Producto, "ID_PROUCTO", "NOMBRE");
-
-                var aplicationDbContext = _context.detalle_Facturas.Include(d => d.Factura).Include(d => d.producto);
+                double total = 0;
+                var aplicationDbContext = _context.detalle_Facturas.Include(d => d.Factura).Include(d => d.producto).Where( g => g.Numero_Factura==id);
+                foreach( var it in aplicationDbContext)
+                {
+                    total = total+it.Precio_Unitario * it.cantidad;
+                }
+                TempData["total"] = total;
                 return View(await aplicationDbContext.ToListAsync());
             }
            
         }
 
         // GET: Detalle_Factura/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id , int? id2)
         {
             if (id == null)
             {
@@ -49,12 +54,13 @@ namespace Facturacion.Controllers
             var detalle_Factura = await _context.detalle_Facturas
                 .Include(d => d.Factura)
                 .Include(d => d.producto)
-                .FirstOrDefaultAsync(m => m.Numero_Factura == id);
+                .FirstOrDefaultAsync(m => m.Numero_Factura == id && m.ID_PROUCTO==id2);
             if (detalle_Factura == null)
             {
                 return NotFound();
             }
-
+            TempData["FAC"] = detalle_Factura.Numero_Factura; ;
+            TempData["Prod"] =detalle_Factura.ID_PROUCTO;
             return View(detalle_Factura);
         }
 
@@ -71,33 +77,50 @@ namespace Facturacion.Controllers
             Detalle_Factura dt = new Detalle_Factura();
             if (ModelState.IsValid)
             {
+                var  Factura = await _context.facturas.FindAsync(Convert.ToInt32(TempData["Factura"]));
+
+                double total = 0;
+                var aplicationDbContext = _context.detalle_Facturas.Include(d => d.Factura).Include(d => d.producto).Where(g => g.Numero_Factura == Convert.ToInt32(TempData["Factura"]));
+                foreach (var it in aplicationDbContext)
+                {
+                    total = total + it.Precio_Unitario * it.cantidad;
+                }
+
+                total = total + (prec * quan);
+                Factura.Total = total;
+                _context.facturas.Update(Factura);
+                 
+
                 dt.ID_PROUCTO = prod;
                 dt.cantidad = quan;
                 dt.Precio_Unitario = prec;
                 dt.Numero_Factura = Convert.ToInt32(TempData["Factura"]);
                 _context.Add(dt);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                 
+                return RedirectToAction("Index", "Detalle_Factura", new { id = dt.Numero_Factura });
             }
              ViewData["ID_PROUCTO"] = new SelectList(_context.Producto, "ID_PROUCTO", "NOMBRE", dt.ID_PROUCTO);
-            return RedirectToAction("Index", "Detalle_Factura");
+            return RedirectToAction("Index", "Detalle_Factura", new { id = dt.Numero_Factura });
         }
 
         // GET: Detalle_Factura/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id , int? id2)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var detalle_Factura = await _context.detalle_Facturas.FindAsync(id);
+            var detalle_Factura = await _context.detalle_Facturas.FindAsync(id,id2);
             if (detalle_Factura == null)
             {
                 return NotFound();
             }
             ViewData["Numero_Factura"] = new SelectList(_context.facturas, "Numero_Factura", "Numero_Factura", detalle_Factura.Numero_Factura);
             ViewData["ID_PROUCTO"] = new SelectList(_context.Producto, "ID_PROUCTO", "ID_PROUCTO", detalle_Factura.ID_PROUCTO);
+            TempData["Factura"] = detalle_Factura.Numero_Factura;
             return View(detalle_Factura);
         }
 
@@ -131,7 +154,7 @@ namespace Facturacion.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Detalle_Factura", new { id =detalle_Factura.Numero_Factura });
             }
             ViewData["Numero_Factura"] = new SelectList(_context.facturas, "Numero_Factura", "Numero_Factura", detalle_Factura.Numero_Factura);
             ViewData["ID_PROUCTO"] = new SelectList(_context.Producto, "ID_PROUCTO", "ID_PROUCTO", detalle_Factura.ID_PROUCTO);
@@ -139,7 +162,7 @@ namespace Facturacion.Controllers
         }
 
         // GET: Detalle_Factura/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id , int? id2)
         {
             if (id == null)
             {
@@ -149,24 +172,26 @@ namespace Facturacion.Controllers
             var detalle_Factura = await _context.detalle_Facturas
                 .Include(d => d.Factura)
                 .Include(d => d.producto)
-                .FirstOrDefaultAsync(m => m.Numero_Factura == id);
+                .FirstOrDefaultAsync(m => m.Numero_Factura == id && m.ID_PROUCTO==id2);
             if (detalle_Factura == null)
             {
                 return NotFound();
             }
+            TempData["FAC"] = detalle_Factura.Numero_Factura; 
 
+            TempData["Prod"] = detalle_Factura.ID_PROUCTO;
             return View(detalle_Factura);
         }
 
         // POST: Detalle_Factura/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
+        public async Task<IActionResult> DeleteConfirmed(int? id, int id2)
         {
-            var detalle_Factura = await _context.detalle_Facturas.FindAsync(id);
+            var detalle_Factura = await _context.detalle_Facturas.FindAsync(id,id2);
             _context.detalle_Facturas.Remove(detalle_Factura);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Detalle_Factura", new { id = detalle_Factura.Numero_Factura });
         }
 
         private bool Detalle_FacturaExists(int? id)

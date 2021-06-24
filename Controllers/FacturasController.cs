@@ -162,7 +162,7 @@ namespace Facturacion.Controllers
         public IActionResult AGP(int id)
         {
             
-            return RedirectToAction("Index", "Detalle_Factura",new { x =id});
+            return RedirectToAction("Index", "Detalle_Factura",new { id =id});
         }
     }
 }

@@ -37,10 +37,16 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete">
+    <form asp-action="Delete" method="post">
         <input type="hidden" asp-for="Numero_Factura" />
         <input type="hidden" asp-for="ID_PROUCTO" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="hidden" name="id2" value="@TempData["Prod"]" />
+             <input type="submit" class="btn btn-danger" value="Eliminar" />
+
+        </ >
+        <a asp-action="Index" asp-route-id="@TempData["FAC"]" >
+            <input type="button" class="btn btn-secondary" value="Regresar" />
+
+        </a>
     </form>
 </div>
