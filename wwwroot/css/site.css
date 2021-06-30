@@ -6,8 +6,22 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+   
+}
 
-
+    .flex-container > .flx {
+        background-color: rgb(33 42 70 / 73%);
+        width: 30%;
+        margin: 10px;
+        text-align: center;
+        line-height: 75px;
+    }
+    .card{
+        background:none;
+    }
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -34,6 +48,10 @@ html {
   html {
     font-size: 16px;
   }
+    
+    .table {
+        padding:0px;
+    }
 }
 
 .border-top {
@@ -78,4 +96,23 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+@media (max-width:600px)
+{
+    .flex-container > .flx {
+        background-color: rgb(33 42 70 / 73%);
+        width: 100%;
+        margin: 10px;
+        text-align: center;
+        line-height: 75px;
+    }
+}
+@media (max-width:800px ) and (min-width:600px) {
+    .flex-container > .flx {
+        background-color: rgb(33 42 70 / 73%);
+        width: 45%;
+        margin: 10px;
+        text-align: center;
+        line-height: 75px;
+    }
 }
