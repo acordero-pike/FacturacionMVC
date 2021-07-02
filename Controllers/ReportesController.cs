@@ -9,10 +9,10 @@ using Facturacion.DB;
 using Facturacion.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Data.SqlClient;
-
+using Microsoft.AspNetCore.Authorization;
 namespace Facturacion.Controllers
 {
-
+    [Authorize]
     public class ReportesController : Controller
     {
         private readonly AplicationDbContext _context;
@@ -90,6 +90,14 @@ namespace Facturacion.Controllers
             {
                 lst.Add(new SelectListItem { Text = i.Nombres + ' ' + i.Apellido, Value = i.codigo_cliente.ToString() });
             }
+            if (feci is null && fecf is null && cl == null)
+            {
+                
+ 
+                ViewData["Clientes"] = new SelectList(lst, "Value", "Text");
+                return View();
+            }
+
 
             if (cl == null || cl==0)
             {
@@ -183,6 +191,7 @@ namespace Facturacion.Controllers
                 return View(vlc);
             }
         }
+            
 
         
 
@@ -218,8 +227,13 @@ namespace Facturacion.Controllers
                 lst.Add(new SelectListItem { Text = i.NOMBRE, Value = i.ID_PROUCTO.ToString() });
             }
 
+            if (feci is null && fecf is null && pr == null)
+            {
 
-             if (pr == null || pr==0 )
+                ViewData["Productos"] = new SelectList(lst, "Value", "Text");
+                return View();
+            }
+            if (pr == null || pr==0 )
             {
 
                 if (feci is null || fecf is null)

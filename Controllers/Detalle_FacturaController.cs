@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Facturacion.DB;
 using Facturacion.Models;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Facturacion.Controllers
 {
+    [Authorize]
     public class Detalle_FacturaController : Controller
     {
         private readonly AplicationDbContext _context;
@@ -25,7 +26,10 @@ namespace Facturacion.Controllers
         {
             if(id==null)
             {
-                return BadRequest();
+                string men = "Error al Cargar ";
+                string men2 = "Se cargo de Manera Errorena ya que no posee una factura. ";
+                    return RedirectToAction("Index", "Error", new { data = men, data2 = men2.Split('.') });
+                 
             }
             else
             {

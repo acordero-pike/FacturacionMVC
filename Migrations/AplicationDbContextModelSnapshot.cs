@@ -152,13 +152,13 @@ namespace Facturacion.Migrations
                     b.HasOne("Facturacion.Models.Producto", "producto")
                         .WithMany()
                         .HasForeignKey("ID_PROUCTO")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Facturacion.Models.Factura", "Factura")
                         .WithMany()
                         .HasForeignKey("Numero_Factura")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Factura");
@@ -171,7 +171,7 @@ namespace Facturacion.Migrations
                     b.HasOne("Facturacion.Models.Cliente", "cliente")
                         .WithMany()
                         .HasForeignKey("codigo_cliente")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("cliente");

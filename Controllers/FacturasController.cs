@@ -148,9 +148,16 @@ namespace Facturacion.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            var factura = await _context.facturas.FindAsync(id);
-            _context.facturas.Remove(factura);
-            await _context.SaveChangesAsync();
+           try
+            {
+                var factura = await _context.facturas.FindAsync(id);
+                _context.facturas.Remove(factura);
+                await _context.SaveChangesAsync();
+            }
+             catch (Exception e)
+            {
+                return RedirectToAction("Index", "Error", new { data = e.Message, data2 = e.InnerException.Message.Split('.') });
+            }
             return RedirectToAction(nameof(Index));
         }
 

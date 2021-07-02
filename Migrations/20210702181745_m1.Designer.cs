@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Facturacion.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20210623164724_data")]
-    partial class data
+    [Migration("20210702181745_m1")]
+    partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -154,13 +154,13 @@ namespace Facturacion.Migrations
                     b.HasOne("Facturacion.Models.Producto", "producto")
                         .WithMany()
                         .HasForeignKey("ID_PROUCTO")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Facturacion.Models.Factura", "Factura")
                         .WithMany()
                         .HasForeignKey("Numero_Factura")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Factura");
@@ -173,7 +173,7 @@ namespace Facturacion.Migrations
                     b.HasOne("Facturacion.Models.Cliente", "cliente")
                         .WithMany()
                         .HasForeignKey("codigo_cliente")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("cliente");

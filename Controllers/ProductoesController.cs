@@ -142,9 +142,16 @@ namespace Facturacion.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            var producto = await _context.Producto.FindAsync(id);
-            _context.Producto.Remove(producto);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var producto = await _context.Producto.FindAsync(id);
+                _context.Producto.Remove(producto);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", "Error", new { data = e.Message, data2 = e.InnerException.Message.Split('.') });
+            }
             return RedirectToAction(nameof(Index));
         }
 

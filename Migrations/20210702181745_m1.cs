@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Facturacion.Migrations
 {
-    public partial class data : Migration
+    public partial class m1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,7 +76,7 @@ namespace Facturacion.Migrations
                         column: x => x.codigo_cliente,
                         principalTable: "clientes",
                         principalColumn: "codigo_cliente",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,13 +96,13 @@ namespace Facturacion.Migrations
                         column: x => x.Numero_Factura,
                         principalTable: "facturas",
                         principalColumn: "Numero_Factura",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_detalle_Facturas_Producto_ID_PROUCTO",
                         column: x => x.ID_PROUCTO,
                         principalTable: "Producto",
                         principalColumn: "ID_PROUCTO",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
