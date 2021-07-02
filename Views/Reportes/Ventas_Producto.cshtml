@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Facturacion.Models.ventaproducto_Result>
+
+@{
+    ViewBag.Title = "Reporte Ventas Producto";
+}
+
+
+
+<form asp-action="ventas_Producto" asp-controller="Reportes">
+    <div class=" form">
+        <h2>Detalle de Facturacion </h2>
+        <span id="error" class="alert-warning"> @TempData["error"]</span>
+        <p> <span> Fecha Inicio </span> <input type="date" name="feci" /> </p>
+        <p> <span> Fecha Final </span> <input type="date" name="fecf" /> </p>
+        <p>
+            <span> Productos </span> @Html.DropDownList("pr", (IEnumerable<SelectListItem>)ViewBag.Productos)
+        </p>
+        <p> <input type="submit" class="btn btn-success" value="Buscar" /></p>
+    </div>
+
+</form>
+<script>
+        const producto = document.querySelector('#producto');
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+
+                setTimeout(function () { document.querySelector('#error').innerHTML = ''; }, 3000);
+
+
+            }
+            )
+    
+</script>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Vendido)
+        </th>
+
+    </tr>
+    @if (Model is null || Model.Count()==0)
+    {
+        <tr>
+            <td colspan="5"><span class="alert"> No se encontraron Datos </span> </td>
+        </tr>
+    }
+    else
+    {
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Vendido)
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>

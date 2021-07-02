@@ -769,6 +769,8 @@ C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\refs\System.Xml.XPath.XD
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\refs\WindowsBase.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Facturacion.Views.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Facturacion.Views.pdb
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\EntityFramework.SqlServer.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\EntityFramework.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Humanizer.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Web.Mvc.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Web.Razor.dll
@@ -816,12 +818,14 @@ C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\SQLitePCLRaw.nativelibra
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\SQLitePCLRaw.core.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\StackExchange.Redis.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.CodeDom.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Composition.AttributedModel.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Composition.Convention.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Composition.Hosting.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Composition.Runtime.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Composition.TypedParts.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Data.SqlClient.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
@@ -891,6 +895,9 @@ C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-x86\native\
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\alpine-x64\native\libe_sqlite3.so
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\linux-arm\native\libe_sqlite3.so
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\linux-arm64\native\libe_sqlite3.so
@@ -903,6 +910,8 @@ C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-arm\native\
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
@@ -942,6 +951,9 @@ C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Productoes\D
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Productoes\Details.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Productoes\Edit.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Productoes\Index.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Reportes\Detalle.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Reportes\ventas_cliente.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Reportes\Ventas_Producto.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_Layoutlog.cshtml.g.cs
