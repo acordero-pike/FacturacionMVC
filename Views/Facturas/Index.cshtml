@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Facturacion.Models.Factura>
 
-@{ ViewData["Title"] = "Index"; }
+@{ ViewData["Title"] = "Index Factura" ; }
 
 <h1>Listado</h1>
 
@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Fecha):      @Html.DisplayFor(modelItem => item.Fecha)
         </p>
         <p>
-            @Html.DisplayNameFor(model => model.Total) :     @Html.DisplayFor(modelItem => item.Total)
+            @Html.DisplayNameFor(model => model.Total) :    $ @Html.DisplayFor(modelItem => item.Total)
         </p>
         <p>
             @Html.DisplayNameFor(model => model.Anulada) :    @Html.DisplayFor(modelItem => item.Anulada)
@@ -50,7 +50,7 @@
                         <input type="button" class="btn btn-secondary" value="Editar" />
                     </a>
               
-                    <a asp-action="Details" asp-route-id="@item.Numero_Factura">
+                    <a asp-action="detalle_factura" asp-controller="Detalle_Factura" asp-route-id="@item.Numero_Factura">
                         <input type="button" class="btn btn-success" value="Detalle" />
                     </a>
 
@@ -82,7 +82,7 @@ else
                         <input type="button" class="btn btn-secondary" value="Editar" />
                     </a>
                 
-                    <a asp-action="Details" asp-route-id="@item.Numero_Factura">
+                    <a asp-action="detalle_factura" asp-controller="Detalle_Factura" asp-route-id="@item.Numero_Factura">
                         <input type="button" class="btn btn-success" value="Detalle" />
                     </a>
 

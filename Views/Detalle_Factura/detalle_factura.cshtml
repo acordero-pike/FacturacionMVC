@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Facturacion.Models.Detalle_Factura>
+
+@{
+    ViewData["Title"] = "Detalle de Factura";
+
+}
+@{
+    int x = 0;
+}
+@foreach (var item in Model)
+{
+
+    if (x == 0)
+    {
+        <table class="table">
+            <tr>
+                <td> Cliente: </td>
+                <td>     @TempData["Cliente"]  </td>
+            </tr>
+            <tr>
+                <td>Feha: </td>
+                <td> @Html.DisplayFor(modelItem => item.Factura.Fecha)</td>
+            </tr>
+
+
+        </table>
+    }
+    x = x + 1;
+}
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio_Unitario)
+            </th>
+            <th>Subtotal</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.producto.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad)
+                </td>
+                <td>
+                    $ @Html.DisplayFor(modelItem => item.Precio_Unitario)
+                </td>
+                <td>
+                    $ @(item.Precio_Unitario*item.cantidad)
+                </td>
+
+            </tr>
+        }
+        <tr> <td colspan="3"> </td> <td> Total : $@TempData["total"] </td></tr>
+
+    </tbody>
+</table>

@@ -12,9 +12,12 @@ namespace Facturacion.Models
         [Key]
         public int? Numero_Factura { get; set; }
         [Display(Name="Cliente")]
+        [Required(ErrorMessage = "Eliga un Cliente para continuar")]
         public int codigo_cliente { get; set; }
         [ForeignKey("codigo_cliente")]
         public virtual Cliente cliente { get; set; }
+
+        [Required(ErrorMessage = "El campo Fecha no puede ir vacio")]
 
         public DateTime Fecha { get; set; }
 

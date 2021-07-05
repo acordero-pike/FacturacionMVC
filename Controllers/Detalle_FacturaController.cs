@@ -24,52 +24,59 @@ namespace Facturacion.Controllers
         // GET: Detalle_Factura
         public async Task<IActionResult> Index(int? id, int? error)
         {
-            if(id==null)
+            if (id == null)
             {
                 string men = "Error al Cargar ";
                 string men2 = "Se cargo de Manera Errorena ya que no posee una factura. ";
-                    return RedirectToAction("Index", "Error", new { data = men, data2 = men2.Split('.') });
-                 
+                return RedirectToAction("Index", "Error", new { data = men, data2 = men2.Split('.') });
+
             }
             else
             {
-                if(error!=null)
-                { TempData["error"] = "No contamos con la cantidad para suplir ese pedido la cantidad que tenemos es de "+error; }//muestra el mensaje de error con la cantidad de producto disponible 
+                if (error != null)
+                { TempData["error"] = "No contamos con la cantidad para suplir ese pedido la cantidad que tenemos es de " + error; }//muestra el mensaje de error con la cantidad de producto disponible 
                 TempData["Factura"] = id;//mantenemos el id de factura en todo momento para poder generar mas datos en el detalle 
                 var pr = from a in _context.Producto where a.ACTIVO == true select a; // validamos que sean solo productos activos 
-                ViewData["ID_PROUCTO"] = new SelectList(pr, "ID_PROUCTO", "NOMBRE");//mostramos el nombre y otorgamos el valor 
+                ViewData["ID_PROUCTO"] = new SelectList(pr, "ID_PROUCTO", "NOMBRE" );//mostramos el nombre y otorgamos el valor 
                 double total = 0;
-                var aplicationDbContext = _context.detalle_Facturas.Include(d => d.Factura).Include(d => d.producto).Where( g => g.Numero_Factura==id);
-                foreach( var it in aplicationDbContext)
+                var aplicationDbContext = _context.detalle_Facturas.Include(d => d.Factura).Include(d => d.producto).Where(g => g.Numero_Factura == id);
+                foreach (var it in aplicationDbContext)
                 {
-                    total = total+it.Precio_Unitario * it.cantidad;
+                    total = total + it.Precio_Unitario * it.cantidad;
                 }
                 TempData["total"] = total;
                 return View(await aplicationDbContext.ToListAsync());
             }
-           
+
         }
 
-        // GET: Detalle_Factura/Details/5
-        public async Task<IActionResult> Details(int? id , int? id2, int error)
+        public async Task<IActionResult> detalle_factura(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
-            }
 
-            var detalle_Factura = await _context.detalle_Facturas
-                .Include(d => d.Factura)
-                .Include(d => d.producto)
-                .FirstOrDefaultAsync(m => m.Numero_Factura == id && m.ID_PROUCTO==id2);
-            if (detalle_Factura == null)
-            {
-                return NotFound();
+                double total = 0;
+                var aplicationDbContext = _context.detalle_Facturas.Include(d => d.Factura).Include(d => d.producto).Where(g => g.Numero_Factura == id); // solo datos del detalle que tengan el numero de fctura
+                var fc = from a in _context.facturas where a.Numero_Factura==id select a.codigo_cliente;
+                foreach (var it in aplicationDbContext)//calculo del total
+                {
+                    total = total + it.Precio_Unitario * it.cantidad;
+                }
+                var CL = from a in _context.clientes where a.codigo_cliente == fc.First() select a.Nombres + " " + a.Apellido; // Cliente 
+                TempData["Cliente"] = CL.First();
+                TempData["total"] = total;
+                return View(await aplicationDbContext.ToListAsync());
             }
-            TempData["FAC"] = detalle_Factura.Numero_Factura; ;
-            TempData["Prod"] =detalle_Factura.ID_PROUCTO;
-            return View(detalle_Factura);
+            else
+            {
+                string men = "Error al Cargar ";
+                string men2 = "Se cargo de Manera Errorena ya que no posee una factura. ";
+                return RedirectToAction("Index", "Error", new { data = men, data2 = men2.Split('.') });
+
+            }
         }
+
+             
 
         // GET: Detalle_Factura/Create
          
@@ -82,12 +89,12 @@ namespace Facturacion.Controllers
         public async Task<IActionResult> Create( int prod , int quan , float prec)
         {
             Detalle_Factura dt = new Detalle_Factura();
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validacion de modelo 
             {
                 var  Factura = await _context.facturas.FindAsync(Convert.ToInt32(TempData["Factura"]));
                 var producto = from a in _context.Producto where a.ID_PROUCTO == prod select a.EXISTENCIA;
-                var pr =  await _context.Producto.FindAsync(prod);
-                double total = 0;
+                var pr =  await _context.Producto.FindAsync(prod);//encontar el producto por id 
+                double total = 0; //declaracion de total
                 var aplicationDbContext = _context.detalle_Facturas.Include(d => d.Factura).Include(d => d.producto).Where(g => g.Numero_Factura == Convert.ToInt32(TempData["Factura"]));
                 foreach (var it in aplicationDbContext)
                 {
@@ -187,7 +194,7 @@ namespace Facturacion.Controllers
                     foreach (var it in aplicationDbContext)
                     {
                         
-                        if (it.ID_PROUCTO != detalle_Factura.ID_PROUCTO)
+                        if (it.ID_PROUCTO != detalle_Factura.ID_PROUCTO)//solo los que no sean el id que se manipula
                         {
                             total = total + it.Precio_Unitario * it.cantidad;
 
@@ -248,7 +255,8 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
             var detalle_Factura = await _context.detalle_Facturas
@@ -257,7 +265,8 @@ namespace Facturacion.Controllers
                 .FirstOrDefaultAsync(m => m.Numero_Factura == id && m.ID_PROUCTO==id2);
             if (detalle_Factura == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina no se encontro el producto en la factura" }); //mensaje de error llamado del controlador 
+
             }
             TempData["FAC"] = detalle_Factura.Numero_Factura; 
 
@@ -308,7 +317,7 @@ namespace Facturacion.Controllers
         public ActionResult GetData()
         {
             
-            var query = _context.Producto.Select(g => new { name = g.ID_PROUCTO, count = g.PRECIO }).ToList();
+            var query = _context.Producto.Select(g => new { name = g.ID_PROUCTO, count = g.PRECIO }).ToList(); //solo los nombres del producto con el rpecio para activar una funcion del front
              
             return Json(query);
         }

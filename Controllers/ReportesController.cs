@@ -22,7 +22,7 @@ namespace Facturacion.Controllers
             _context = context;
         }
 
-         private string DB = "Server=DESKTOP-IFKEU1D\\SQLEXPRESS;Database=MVC;user=sa;password=albin123;Trusted_Connection=false;MultipleActiveResultSets=true";
+         private string DB = "Server=DESKTOP-IFKEU1D\\SQLEXPRESS;Database=MVC;user=sa;password=albin123;Trusted_Connection=false;MultipleActiveResultSets=true";//conecion 
 
 
 
@@ -64,7 +64,7 @@ namespace Facturacion.Controllers
                 }
                 return View(dt);
             }
-        }
+        }//acciones del reporte para busqueda 
 
         private detalle_Result mapeardt(SqlDataReader read)
         {
@@ -77,7 +77,7 @@ namespace Facturacion.Controllers
                 Productos_Vendidos = (int)read["Productos_Vendidos"]
 
             };
-        }
+        }//estructura del modelo 
 
         public async Task<IActionResult> ventas_clienteAsync(DateTime? feci, DateTime? fecf, int? cl)
         {
@@ -85,12 +85,12 @@ namespace Facturacion.Controllers
             List<SelectListItem> lst = new List<SelectListItem>();
             lst.Add(new SelectListItem { Text = "Seleccione Una Opcion", Value = "0" });
 
-            foreach (var i in x)
+            foreach (var i in x)//creacion de listado de cleintes 
 
             {
                 lst.Add(new SelectListItem { Text = i.Nombres + ' ' + i.Apellido, Value = i.codigo_cliente.ToString() });
             }
-            if (feci is null && fecf is null && cl == null)
+            if (feci is null && fecf is null && cl == null) //validacion de seleccion a que reporte accede con losd atos que se reciben 
             {
                 
  
@@ -103,7 +103,7 @@ namespace Facturacion.Controllers
             {
                 if (feci is null || fecf is null)
                 {
-                    TempData["error"] = "Ingrese los campos de fechas, ambos son necesarios Cliente ";
+                    TempData["error"] = "Ingrese los campos de fechas, ambos son necesarios o seleccione un Cliente ";
 
                     ViewData["Clientes"] = new SelectList(lst, "Value", "Text");
                     return View();
@@ -199,7 +199,7 @@ namespace Facturacion.Controllers
 
 
 
-        private ventacl_Result mapearvc(SqlDataReader read)
+        private ventacl_Result mapearvc(SqlDataReader read)// constriccion del modelo
         {
 
 
@@ -224,7 +224,7 @@ namespace Facturacion.Controllers
             foreach (var i in x)
 
             {
-                lst.Add(new SelectListItem { Text = i.NOMBRE, Value = i.ID_PROUCTO.ToString() });
+                lst.Add(new SelectListItem { Text = i.NOMBRE + i.DESCRIPCION, Value = i.ID_PROUCTO.ToString() });//creacion de la lista de productos 
             }
 
             if (feci is null && fecf is null && pr == null)

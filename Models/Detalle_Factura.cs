@@ -25,7 +25,7 @@ namespace Facturacion.Models
         public virtual Producto producto { get; set; }
 
 
-
+        [Range(1, 9999999,ErrorMessage ="Ingrese valores mayores a cero")]
         public int cantidad { get; set;  }
         public double Precio_Unitario { get; set; }
     }

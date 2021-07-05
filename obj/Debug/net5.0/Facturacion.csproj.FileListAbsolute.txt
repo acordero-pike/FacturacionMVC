@@ -477,15 +477,6 @@ C:\Users\albin\Desktop\FacturacionMVC-develop\FacturacionMVC-develop\obj\Debug\n
 C:\Users\albin\Desktop\FacturacionMVC-develop\FacturacionMVC-develop\obj\Debug\net5.0\ref\Facturacion.dll
 C:\Users\albin\Desktop\FacturacionMVC-develop\FacturacionMVC-develop\obj\Debug\net5.0\Facturacion.pdb
 C:\Users\albin\Desktop\FacturacionMVC-develop\FacturacionMVC-develop\obj\Debug\net5.0\Facturacion.genruntimeconfig.cache
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.AssemblyInfoInputs.cache
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.AssemblyInfo.cs
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.csproj.CoreCompileInputs.cache
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.RazorAssemblyInfo.cache
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.RazorAssemblyInfo.cs
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.csprojAssemblyReference.cache
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\appsettings.json
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Facturacion.exe
@@ -781,6 +772,7 @@ C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Facturacion.Views.pdb
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\EntityFramework.SqlServer.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\EntityFramework.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Humanizer.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Web.Mvc.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Web.Razor.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Web.Helpers.dll
@@ -843,6 +835,7 @@ C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Diagnostics.Perfo
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Runtime.Caching.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\es\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -928,6 +921,14 @@ C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netcore
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.AssemblyInfoInputs.cache
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.AssemblyInfo.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.csproj.CoreCompileInputs.cache
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.RazorAssemblyInfo.cache
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.RazorAssemblyInfo.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\staticwebassets\Facturacion.StaticWebAssets.Manifest.cache
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\staticwebassets\Facturacion.StaticWebAssets.xml
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\scopedcss\bundle\Facturacion.styles.css
@@ -942,11 +943,12 @@ C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Clientes\Edi
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Clientes\Index.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Delete.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Details.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\detalle_factura.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Edit.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Index.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Error\Index.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Facturas\Create.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Facturas\Delete.cshtml.g.cs
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Facturas\Details.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Facturas\Edit.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Facturas\Index.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Home\Contactenos.cshtml.g.cs
@@ -962,6 +964,7 @@ C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Reportes\Ven
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_Layoutlog.cshtml.g.cs
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_Lerror.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Usuarios\Create.cshtml.g.cs
@@ -979,7 +982,4 @@ C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.dll
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\ref\Facturacion.dll
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.pdb
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.genruntimeconfig.cache
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Error\Index.cshtml.g.cs
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Shared\_Lerror.cshtml.g.cs
-C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
-C:\Users\albin\Desktop\MVC\Facturacion\bin\Debug\net5.0\es\Microsoft.AspNet.Identity.Core.resources.dll
+C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Facturacion.csprojAssemblyReference.cache

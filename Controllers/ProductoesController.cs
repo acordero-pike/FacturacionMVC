@@ -25,7 +25,7 @@ namespace Facturacion.Controllers
         // GET: Productoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Producto.ToListAsync());
+            return View(await _context.Producto.ToListAsync());//lista de productos
         }
 
         // GET: Productoes/Details/5
@@ -33,14 +33,16 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
             var producto = await _context.Producto
-                .FirstOrDefaultAsync(m => m.ID_PROUCTO == id);
+                .FirstOrDefaultAsync(m => m.ID_PROUCTO == id);//busqueda por id 
             if (producto == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina No se encontro el producto " }); //mensaje de error llamado del controlador 
+
             }
 
             return View(producto);
@@ -49,7 +51,7 @@ namespace Facturacion.Controllers
         // GET: Productoes/Create
         public IActionResult Create()
         {
-            return View();
+            return View();//vista de crear
         }
 
         // POST: Productoes/Create
@@ -59,10 +61,10 @@ namespace Facturacion.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID_PROUCTO,NOMBRE,DESCRIPCION,PRECIO,COSTO,EXISTENCIA,ACTIVO")] Producto producto)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validacion de modelo
             {
                 _context.Add(producto);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();// guardar cambios 
                 return RedirectToAction(nameof(Index));
             }
             return View(producto);
@@ -73,13 +75,15 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
-            var producto = await _context.Producto.FindAsync(id);
+            var producto = await _context.Producto.FindAsync(id); //busqueda del producto por id 
             if (producto == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina No se encontro el producto " }); //mensaje de error llamado del controlador 
+
             }
             return View(producto);
         }
@@ -93,21 +97,23 @@ namespace Facturacion.Controllers
         {
             if (id != producto.ID_PROUCTO)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(producto);
+                    _context.Update(producto); //actualizar el producto
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductoExists(producto.ID_PROUCTO))
+                    if (!ProductoExists(producto.ID_PROUCTO)) // revision de existencia del id 
                     {
-                        return NotFound();
+                                   return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina el codigo produto ya existe " }); //mensaje de error llamado del controlador 
+
                     }
                     else
                     {
@@ -124,14 +130,16 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
             var producto = await _context.Producto
-                .FirstOrDefaultAsync(m => m.ID_PROUCTO == id);
+                .FirstOrDefaultAsync(m => m.ID_PROUCTO == id);//busqueda del producto 
             if (producto == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina Producto no encontrado" }); //mensaje de error llamado del controlador 
+
             }
 
             return View(producto);
@@ -145,8 +153,8 @@ namespace Facturacion.Controllers
             try
             {
                 var producto = await _context.Producto.FindAsync(id);
-                _context.Producto.Remove(producto);
-                await _context.SaveChangesAsync();
+                _context.Producto.Remove(producto);//elimincacion 
+                await _context.SaveChangesAsync();//guardado
             }
             catch (Exception e)
             {

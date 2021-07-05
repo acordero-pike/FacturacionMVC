@@ -24,8 +24,13 @@ namespace Facturacion.Controllers
             return View();
         }
 
-        public IActionResult Contactenos()
+        public IActionResult Contactenos(int? id)
         {
+            if(id!= null)
+            {
+                TempData["succes"] = "Mensaje enviado Correctamente";
+                return View();
+            }
             return View();
         }
         [HttpPost("contacto")]
@@ -68,7 +73,8 @@ namespace Facturacion.Controllers
                 TempData["Error"] = "Error enviando correo electrónico: " + ex.Message;
             }
             */
-            return RedirectToAction("Contactenos", "Home");
+           
+            return RedirectToAction("Contactenos", "Home",new { id=1});
             
         }
 

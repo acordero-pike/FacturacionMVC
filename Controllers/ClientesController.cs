@@ -25,7 +25,7 @@ namespace Facturacion.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.clientes.ToListAsync());
+            return View(await _context.clientes.ToListAsync()); //retorna el listado de clientes 
         }
 
         // GET: Clientes/Details/5
@@ -33,14 +33,16 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
             var cliente = await _context.clientes
                 .FirstOrDefaultAsync(m => m.codigo_cliente == id);
             if (cliente == null)
             {
-                return NotFound();
+                 return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Cliente no encotrado" }); //cliente solicitado no encontrado
+
             }
 
             return View(cliente);
@@ -73,13 +75,14 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
             }
 
-            var cliente = await _context.clientes.FindAsync(id);
+            var cliente = await _context.clientes.FindAsync(id); // busqueda del cliente 
             if (cliente == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Cliente no encontrado" }); //llamdo del error
+
             }
             return View(cliente);
         }
@@ -93,48 +96,52 @@ namespace Facturacion.Controllers
         {
             if (id != cliente.codigo_cliente)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina falta identificador para editar" }); //mensaje de error llamado del controlador 
+
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //validacion de modelo 
             {
                 try
                 {
-                    _context.Update(cliente);
-                    await _context.SaveChangesAsync();
+                    _context.Update(cliente); //actualiza el modelo 
+                    await _context.SaveChangesAsync(); //guarda cambios 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!ClienteExists(cliente.codigo_cliente))
                     {
-                        return NotFound();
+                        return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina  identificador repetido" }); //mensaje de error llamado del controlador 
+
                     }
                     else
                     {
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));//retorna el index
             }
             return View(cliente);
         }
 
         // GET: Clientes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id) 
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
-            var cliente = await _context.clientes
+            var cliente = await _context.clientes // bucamos clientes y enconteramos el que se eliimina 
                 .FirstOrDefaultAsync(m => m.codigo_cliente == id);
             if (cliente == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina cliente no encontrado" }); //mensaje de error llamado del controlador 
+
             }
 
-            return View(cliente);
+            return View(cliente);//regresa la vista del dato encontrado 
         }
 
         // POST: Clientes/Delete/5
@@ -144,8 +151,8 @@ namespace Facturacion.Controllers
         {
             try
             {
-                var cliente = await _context.clientes.FindAsync(id);
-                _context.clientes.Remove(cliente);
+                var cliente = await _context.clientes.FindAsync(id);//busca el dato 
+                _context.clientes.Remove(cliente);//lo remueve 
                 await _context.SaveChangesAsync();
             }
             catch (Exception e)

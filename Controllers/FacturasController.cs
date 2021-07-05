@@ -25,32 +25,15 @@ namespace Facturacion.Controllers
         public async Task<IActionResult> Index()
         {
             var aplicationDbContext = _context.facturas.Include(f => f.cliente);
-            return View(await aplicationDbContext.ToListAsync());
+            return View(await aplicationDbContext.ToListAsync()); //lista de facturas
         }
 
-        // GET: Facturas1/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var factura = await _context.facturas
-                .Include(f => f.cliente)
-                .FirstOrDefaultAsync(m => m.Numero_Factura == id);
-            if (factura == null)
-            {
-                return NotFound();
-            }
-
-            return View(factura);
-        }
+         
 
         // GET: Facturas1/Create
         public IActionResult Create()
         {
-            ViewData["codigo_cliente"] = new SelectList(_context.clientes,"codigo_cliente","Nombres");
+            ViewData["codigo_cliente"] = new SelectList(_context.clientes,"codigo_cliente","Nombres");//datos para el dropdown de clientes
             return View();
         }
 
@@ -61,10 +44,10 @@ namespace Facturacion.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Numero_Factura,codigo_cliente,Fecha,Total,Anulada")] Factura factura)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//validacion del modelo 
             {
-                _context.Add(factura);
-                await _context.SaveChangesAsync();
+                _context.Add(factura); //agregar el modelo 
+                await _context.SaveChangesAsync();//guardar 
                 return RedirectToAction(nameof(Index));
             }
             ViewData["codigo_cliente"] = new SelectList(_context.clientes, "codigo_cliente", "Nombres", factura.codigo_cliente);
@@ -76,13 +59,15 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
-            var factura = await _context.facturas.FindAsync(id);
+            var factura = await _context.facturas.FindAsync(id);//busqueda por id de la factura 
             if (factura == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina no se encontro la Factura" }); //mensaje de error llamado del controlador 
+
             }
             ViewData["codigo_cliente"] = new SelectList(_context.clientes, "codigo_cliente", "Nombres", factura.codigo_cliente);
             return View(factura);
@@ -97,21 +82,23 @@ namespace Facturacion.Controllers
         {
             if (id != factura.Numero_Factura)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(factura);
+                    _context.Update(factura);// actualizar
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!FacturaExists(factura.Numero_Factura))
                     {
-                        return NotFound();
+                        return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina la Factura ya existe " }); //mensaje de error llamado del controlador 
+
                     }
                     else
                     {
@@ -129,15 +116,17 @@ namespace Facturacion.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina" }); //mensaje de error llamado del controlador 
+
             }
 
             var factura = await _context.facturas
                 .Include(f => f.cliente)
-                .FirstOrDefaultAsync(m => m.Numero_Factura == id);
+                .FirstOrDefaultAsync(m => m.Numero_Factura == id); //busqueda de la factura
             if (factura == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Error", new { data = "Error", data2 = "Mal llamado de la pagina Factura no encotrada" }); //mensaje de error llamado del controlador 
+
             }
 
             return View(factura);
@@ -150,7 +139,7 @@ namespace Facturacion.Controllers
         {
            try
             {
-                var factura = await _context.facturas.FindAsync(id);
+                var factura = await _context.facturas.FindAsync(id); //eliminacion
                 _context.facturas.Remove(factura);
                 await _context.SaveChangesAsync();
             }

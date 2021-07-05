@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Facturacion.Models.Detalle_Factura>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index Detalle";
   
 }
 
@@ -13,12 +13,15 @@
     
 </p><form asp-action="Create" method="post">
         <span class="alert-danger" id="error"> @TempData["error"]</span>
-    <table> <thead><tr> <th>Producto</th> <th> Cantidad</th><th>Precio unitario</th> </thead> <tbody><tr><td> <select id="producto"name="prod" asp-items="ViewBag.ID_PROUCTO"> </select></td><td><input type="number" name="quan" /> </td><td id="prc"> <input type="number" name="prec" readonly="readonly" /></td>  <td><input type="submit" value="agregar" /></td></tr></tbody> </table> 
+    <table> <thead><tr> <th>Producto</th> <th> Cantidad</th><th>Precio unitario</th> </thead> <tbody><tr><td> <select id="producto"name="prod" asp-items="ViewBag.ID_PROUCTO"> </select></td><td><input type="number" id="ca" name="quan"  /> </td><td id="prc"> <input type="number" name="prec" readonly="readonly" /></td>  <td><input id="agg" type="submit" value="agregar" /></td></tr></tbody> </table> 
 </form>
     <script>
+     
+        
         const producto = document.querySelector('#producto');
 
         document.addEventListener('DOMContentLoaded', () => {
+          
             $.getJSON("/Detalle_factura/GetData", function (data) {
 
                 for (var i = 0; i < data.length; i++) {
@@ -118,9 +121,14 @@
                   $ @(item.Precio_Unitario*item.cantidad)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Numero_Factura, id2 = item.ID_PROUCTO }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Numero_Factura, id2 = item.ID_PROUCTO })|
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Numero_Factura, id2 = item.ID_PROUCTO })
+                    <a asp-action="Edit" asp-route-id="@item.Numero_Factura" asp-route-id2="@item.ID_PROUCTO">
+                        <input type="button" class="btn btn-secondary" value="Editar" />
+
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Numero_Factura" asp-route-id2="@item.ID_PROUCTO">
+                        <input type="button" class="btn btn-danger" value="Eliminar" />
+
+                    </a>
                 </td>
             </tr>
         }
