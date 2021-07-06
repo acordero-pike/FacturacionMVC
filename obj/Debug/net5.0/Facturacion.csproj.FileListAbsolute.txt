@@ -942,7 +942,6 @@ C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Clientes\Det
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Clientes\Edit.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Clientes\Index.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Delete.cshtml.g.cs
-C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Details.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\detalle_factura.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Edit.cshtml.g.cs
 C:\Users\albin\Desktop\MVC\Facturacion\obj\Debug\net5.0\Razor\Views\Detalle_Factura\Index.cshtml.g.cs

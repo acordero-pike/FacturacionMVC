@@ -10,14 +10,50 @@
     <div class=" form">
         <h2>Detalle de Facturacion </h2>
         <span  id ="error" class="alert-warning"> @TempData["error"]</span>
-        <p> <span> Fecha Inicio </span> <input type="date" name="feci" /> </p>
-        <p> <span> Fecha Final </span> <input type="date" name="fecf" /> </p>
-        <p> <input type="submit" class="btn btn-success" value="Buscar" /></p>
+        <p> <span> Fecha Inicio </span> <input id="in" type="date" name="feci" /> </p>
+        <p> <span> Fecha Final </span> <input id="fn" type="date" name="fecf" /> </p>
+        <p> <input id="btn" type="submit" class="btn btn-success" value="Buscar" /></p>
     </div>
 
 </form>
 <script>
-        const producto = document.querySelector('#producto');
+        const ins = document.querySelector('#in');
+    const fn = document.querySelector('#fn');
+
+    ins.addEventListener('change', e => {
+        console.log(fn.value)
+         
+        if (fn.value =="") {
+           
+        } else {
+            
+            if (fn.value < e.target.value) {
+                document.querySelector('#error').innerHTML = 'Fecha de inicio Mayor a fecha final'
+                document.querySelector('#btn').disabled = true;
+                setTimeout(function () { document.querySelector('#error').innerHTML = ''; }, 3000);
+            }
+            else {
+                document.querySelector('#btn').disabled = false;
+            }
+        }
+    })
+    fn.addEventListener('change', e => {
+
+
+        if (ins.value == null) {
+
+        } else {
+
+            if (ins.value > e.target.value) {
+                document.querySelector('#error').innerHTML = 'Fecha de inicio Mayor a fecha final'
+                document.querySelector('#btn').disabled = true;
+                setTimeout(function () { document.querySelector('#error').innerHTML = ''; }, 3000);
+            }
+            else {
+                document.querySelector('#btn').disabled = false;
+            }
+        }
+    })
 
         document.addEventListener('DOMContentLoaded', () => {
             

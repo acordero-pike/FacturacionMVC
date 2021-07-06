@@ -17,11 +17,20 @@
 </form>
     <script>
      
-        
+        const btn = document.querySelector('#agg');
         const producto = document.querySelector('#producto');
+        const ca = document.querySelector('#ca');
+        ca.addEventListener('change', e => {
+            if (e.target.value > 0) {
+                btn.disabled = false;
+            } else {
+                alert('Ingrese cantidad mayor a cero ')
+                btn.disabled = true;
+            }
+        })
 
         document.addEventListener('DOMContentLoaded', () => {
-          
+            btn.disabled = true;
             $.getJSON("/Detalle_factura/GetData", function (data) {
 
                 for (var i = 0; i < data.length; i++) {

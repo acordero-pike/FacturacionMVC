@@ -144,6 +144,7 @@ namespace Facturacion.Controllers
 
                 return RedirectToAction("Index", "Detalle_Factura", new { id = dt.Numero_Factura }); // si todo sale bien solo se envia la factura para que liste solo lso de la factura #
             }
+          
              ViewData["ID_PROUCTO"] = new SelectList(_context.Producto, "ID_PROUCTO", "NOMBRE", dt.ID_PROUCTO);
 
             return RedirectToAction("Index", "Detalle_Factura", new { id = dt.Numero_Factura }  );
@@ -167,10 +168,11 @@ namespace Facturacion.Controllers
         ViewData["Numero_Factura"] = new SelectList(_context.facturas, "Numero_Factura", "Numero_Factura", detalle_Factura.Numero_Factura);
             ViewData["ID_PROUCTO"] = new SelectList(_context.Producto, "ID_PROUCTO", "ID_PROUCTO", detalle_Factura.ID_PROUCTO);
             TempData["Factura"] = detalle_Factura.Numero_Factura;
+            var pr = from a in _context.Producto where a.ID_PROUCTO == detalle_Factura.ID_PROUCTO select a.NOMBRE;
+            TempData["pr"] = pr.First();
             return View(detalle_Factura);
         }
-
-        // POST: Detalle_Factura/Edit/5
+ 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]

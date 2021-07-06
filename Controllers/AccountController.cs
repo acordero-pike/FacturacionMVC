@@ -45,7 +45,8 @@ namespace Facturacion.Controllers
             }
             else
             {
-                return BadRequest(); // si el usuario no es valido envia un badrequest como respuesta
+                return RedirectToAction("Index", "Error", new { data = "Error de Log in", data2 = "Usuario o Contraseña invalidos" });
+                // si el usuario no es valido envia un badrequest como respuesta
             }
 
 

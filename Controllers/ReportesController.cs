@@ -224,7 +224,7 @@ namespace Facturacion.Controllers
             foreach (var i in x)
 
             {
-                lst.Add(new SelectListItem { Text = i.NOMBRE + i.DESCRIPCION, Value = i.ID_PROUCTO.ToString() });//creacion de la lista de productos 
+                lst.Add(new SelectListItem { Text = i.NOMBRE + " "+i.DESCRIPCION, Value = i.ID_PROUCTO.ToString() });//creacion de la lista de productos 
             }
 
             if (feci is null && fecf is null && pr == null)
